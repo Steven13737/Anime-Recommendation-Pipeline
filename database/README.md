@@ -1,7 +1,7 @@
 # Anime-Recommendation-Pipeline
 
-# Database
-+ mysql 8
+# Database and Deployment 
++ mysql 8.0 on Google Cloud
 
 # tables
 + **anime**: anime data from kaggle dataset, contains all animes' features
@@ -11,4 +11,10 @@
 + **user**: user's account and password, used for verification
 + **user_sim**: cf based recommendation result
 + **content_based**: content based recommendation result
+
+# Optimization
+We split the table to speed up query, in our project, the table **item** is used for speed up content-based recommendation
+
+# Data Access Layer
+For more efficiency of other services to communicate with database, we also build a logical API called database.py, which includes several functions that save the more frequent operations with database. 
 

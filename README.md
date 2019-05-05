@@ -33,5 +33,6 @@ python web/back-end/PredictServic/predict_service.py
 
 
 # Database
+[Details for database](https://github.com/Steven13737/Anime-Recommendation-Pipeline/tree/master/database)
 
 # Recommendation

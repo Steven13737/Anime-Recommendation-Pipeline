@@ -28,7 +28,4 @@ python preict_server.py # in another terminal
 |-- PredictService: predict cf based recommendation \
 |-- web.py: Tornado main server file
 
-# Demo
-![](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/web/back-end/src/login.png)
-![](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/web/back-end/src/recommendation.png)
 

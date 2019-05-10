@@ -4,7 +4,7 @@ from kafka.errors import KafkaError
 from kafka.structs import TopicPartition, OffsetAndMetadata
 from pickle import dumps, loads
 
-kafka_address = <Kafka Address>
+kafka_address = '34.73.198.4:9092'
 producer = KafkaProducer(bootstrap_servers=[kafka_address])
 
 def kafkasend(topic, msg):

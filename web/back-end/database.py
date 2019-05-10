@@ -14,17 +14,17 @@
 # name: str of item name
 # return a list of similar itme name
 
+database_address = <Database Address>
 
 import pymysql
 import json
 
-cnx = pymysql.connect(host= '35.245.49.151',
+cnx = pymysql.connect(host= database_address,
                               user='ha',
                               password='password',
                               db='pipeline',
                               charset='utf8mb4',
                               cursorclass=pymysql.cursors.DictCursor)
-
 
 def run_q(q, args, fetch=False):
     cursor = cnx.cursor()
@@ -43,7 +43,7 @@ def get_similar(id):
         return list(r[0].values())[:-1]
 
 def get_best(id):
-    q = "select * from favorite where id=" + str(id)
+    q = "select * from favorit where id=" + str(id)
     r = run_q(q, None, True)
     res = [k for k in list(r[0].values())[:-1] if k!=0]
     return res

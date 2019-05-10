@@ -36,14 +36,17 @@ python web/back-end/PredictServic/predict_service.py
 [Details for database](https://github.com/Steven13737/Anime-Recommendation-Pipeline/tree/master/database)
 
 # Recommendation
-[Details for Recommendation](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/recommendation)
+[details Recommendation](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/recommendation)
+
+
 
 # Demo
 **After running the system, we can login to our recommendation system**
 ![Login Page](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/src/Login.png)
 
 **Then, the back-end will verify the user's identity and retrive the cf recommendation content from database. Then in the web page, we use Ajax to help user get content-based recommendation content. we show the user's information and recommendation items here**
-![Recommendation Page](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/src/Recommendation.png)
+![CF based Recommendation](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/src/Recommendation.png)
+![Content based Recommendation](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/src/Recommendation2.png)
 
 **To monitor our system status, we can fetch the running information from back end**
 ![Back-end log](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/src/log.png)

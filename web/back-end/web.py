@@ -10,7 +10,7 @@ import database
 class MainHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
         info = ""
-        self.render('index.html', info = info)
+        self.render('login.html', info = info)
 
     def post(self, *args, **kwargs):
         # verify account and password
@@ -36,22 +36,22 @@ class MainHandler(tornado.web.RequestHandler):
 
         # receive recommendation content and return to front end
         print("Set Consumer")
-        util.setConsumer('cf_item')
+        consumer = util.setConsumer('cf_item')
         print("Start Receive Kafka")
         while True:
-            reco = util.kafkareceive()
+            reco = util.kafkareceive(consumer)
             if(reco != None):
                 break
 
         # receive 5 recommendation items
         #items_cf = ["Kimi no Na wa.", "Fullmetal Alchemist: Brotherhood", "Gintama°", "Steins;Gate", "Hunter x Hunter (2011)"]
         item_cf = reco
-        items_cf= util.buildhtml(items_cf)
+        items_cf = util.buildhtml(item_cf)
 
 
         self.write("<h1>CF Recommendation</h1>")
         self.write(items_cf)
-        return self.render("success.html", title="Recommentaion",user = user)
+        return self.render("index.html", title="Recommentaion",user = user)
 
 # Test Page Handler
 class TestHandler(tornado.web.RequestHandler):

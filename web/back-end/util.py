@@ -4,17 +4,17 @@ from kafka.errors import KafkaError
 from kafka.structs import TopicPartition, OffsetAndMetadata
 from pickle import dumps, loads
 
+kafka_address = <Kafka Address>
+producer = KafkaProducer(bootstrap_servers=[kafka_address])
 
-producer = KafkaProducer(bootstrap_servers=[<Kafka Address>])
-
-def kafkasend(toic, msg):
+def kafkasend(topic, msg):
     '''
     @ param: topic: str, kafkatopic
     @ param: msg: any datastructure
     @ function: kafka send, print offset ater send
     '''
     # Asynchronous by default
-    future = producer.send(toipic, dumps(msg))
+    future = producer.send(topic, dumps(msg))
     # Block for 'synchronous' sends
     try:
         record_metadata = future.get(timeout=10)
@@ -37,13 +37,14 @@ consumer = None
 def setConsumer(topic):
     consumer = KafkaConsumer(
         topic,
-         bootstrap_servers=[<Kafka Address>],
+         bootstrap_servers=[kafka_address],
          auto_offset_reset='earliest', # initilaize offset 'earlist' means from 0, 'latest' from oldest
          group_id = '0', # different consumer needs different group_id
          value_deserializer=lambda x: loads(x))
     print("consumer's topic is set as: ", topic)
+    return consumer
 
-def kafkareceive():
+def kafkareceive(consumer):
     msg = consumer.poll(timeout_ms=1000, max_records = 1)
     if len(msg) == 0:
         return None

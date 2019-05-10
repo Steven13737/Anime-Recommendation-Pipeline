@@ -5,16 +5,18 @@ from pickle import loads
 from pickle import dumps
 from database import get_similar, get_best, get_info
 import operator
-address_1 = <Kafka Address>
+
+# Input Address Server Address Here
+kafka_address = <Kafka Address>
 
 consumer = KafkaConsumer('id',
-                         bootstrap_servers=[address_1],
-                         auto_offset_reset='earlist',  # initilaize offset 'earlist' means from 0, 'latest' from oldest
+                         bootstrap_servers=[kafka_address],
+                         auto_offset_reset='latest',  # initilaize offset 'earlist' means from 0, 'latest' from oldest
                          group_id='0',  # different consumer needs different group_id
                          value_deserializer=lambda x: loads(x)
                          )
 
-producer = KafkaProducer(bootstrap_servers=[address_1])
+producer = KafkaProducer(bootstrap_servers=[kafka_address])
 
 def similar_user_recs(user):
     sim_user_list = get_similar(user)
@@ -37,7 +39,8 @@ def similar_user_recs(user):
 
 
 while True:
-    msg = consumer.poll(timeout_ms = 10000, max_records = 1)
+    print("Waiting For New Data")
+    msg = consumer.poll(timeout_ms = 1000, max_records = 1)
     if not msg:
         continue
     print('receive', msg)

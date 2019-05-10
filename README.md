@@ -35,8 +35,11 @@ python web/back-end/PredictServic/predict_service.py
 # Database
 [Details for database](https://github.com/Steven13737/Anime-Recommendation-Pipeline/tree/master/database)
 
-# Recommendation
-[Details for Recommendation](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/recommendation)
+# CF based Recommendation
+[CF based Recommendation](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/recommendation)
+
+# Content based Recommendation
+[Content based Recommendation](https://github.com/Steven13737/Anime-Recommendation-Pipeline/blob/master/src/Recommendation2.png)
 
 # Demo
 **After running the system, we can login to our recommendation system**

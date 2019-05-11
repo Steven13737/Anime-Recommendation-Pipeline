@@ -7,7 +7,7 @@ from database import get_similar, get_best, get_info
 import operator
 
 # Input Address Server Address Here
-kafka_address = <Kafka Address>
+kafka_address = '34.73.198.4:9092'
 
 consumer = KafkaConsumer('id',
                          bootstrap_servers=[kafka_address],

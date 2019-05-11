@@ -49,9 +49,12 @@ class MainHandler(tornado.web.RequestHandler):
         items_cf = util.buildhtml(item_cf)
 
 
-        self.write("<h1>CF Recommendation</h1>")
+        # self.write("<h1>CF Recommendation</h1>")
+        self.write("<div class=\"container\"><header><p style=\"color:white border:1px\"><span></span><br /></p></header></div><div class=\"login-page\"><div class=\"form\"><div style=\"font-size:24\"><b> Welcome, <div id=\'username\' style=\"display:inline\">%s</div>!</b><br>We recommend the following shows. Click on a show you like to see similar recommendations!<br><br><table id=\'recommendations\'>"%(account))
         self.write(items_cf)
-        return self.render("index.html", title="Recommentaion",user = user)
+        self.write("</table></div></div></div>")
+
+        return self.render("index.html", title="Recommendation",user = user)
 
 # Test Page Handler
 class TestHandler(tornado.web.RequestHandler):
@@ -61,10 +64,12 @@ class TestHandler(tornado.web.RequestHandler):
         items = ""
         # Construct Items list
         for i in range(len(recommendation)):
-            strbase = "<div onclick = 'get(this.id)' id = '%s'> %s </div>"%(recommendation[i], recommendation[i])
+            strbase = "<div onclick = 'get(this.id)' id = '%s'><a class=\"link\" href=#>%s</a></div>"%(recommendation[i], recommendation[i])
             items = items + '<tr>' + strbase +' </tr>'
         # srite back
-        self.write(items)
+        self.write("<div class=\"container\"><header><p style=\"color:white border:1px\"><span></span><br /></p></header></div><div class=\"login-page\"><div class=\"form\"><div style=\"font-size:24\"><b> Welcome, <div id=\'username\' style=\"display:inline\"></div>!</b><br>We recommend the following shows. Click on a show you like to see similar recommendations!<br><br><table id=\'recommendations\'>")
+        # self.write(items)
+        self.write("</table></div></div></div>")
         return self.render("test.html")
 
 # Ajax Handler, to make content-based recommendation

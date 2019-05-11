@@ -82,11 +82,6 @@ h1 {
   margin: 50px auto;
   text-align: center;
 }
-.rectable{
-  text-align: center;
-  display: inline-block;
-  font-size: 24px;
-}
 .container .info h1 {
   margin: 0 0 15px;
   padding: 0;
@@ -94,7 +89,6 @@ h1 {
   font-weight: 300;
   color: #1a1a1a;
 }
-.
 .container .info span {
   color: #4d4d4d;
   font-size: 12px;
@@ -109,13 +103,14 @@ h1 {
 .container>header {
 	align-items: center;
 	background:
-		url('https://i.ibb.co/CMw7PdK/wallpaper.jpg')
-		no-repeat 10% 10%;
+		url('wallpaper.jpg')
+		no-repeat 50% 40%;
 	background-size: 100%;
   margin: 0px;
   width: 100%;
 	/* //display: flex; */
-	height: 400px;
+	height: 250px;
+  padding: 0px;
 }
 body {
   background: #76b852; /* fallback for old browsers */
@@ -155,7 +150,7 @@ body {
    </head>
    <body>
 
-<!-- <div class="container">
+<div class="container">
   <header>
     <p style="color:white border:1px">
       <span></span>
@@ -166,15 +161,15 @@ body {
 
 <div class="login-page">
 
-<div class="form">
+  <div class="form">
     <div style="font-size:24">
-      <b> Welcome, <div id='username' style="display:inline"></div>!</b>
+      <b> Welcome, 61155618-46a6!</b>
       <br>
       We recommend the following shows. Click on a show you like to see similar recommendations!
       <br>
       <br>
-      <table id='recommendations'> -->
-      <!-- <tr>
+      <table id=recommendations>
+      <tr>
          <div onclick = 'get(this.id)' id = 'Fullmetal Alchemist: Brotherhood'><a class="link" href="#">Fullmetal Alchemist: Brotherhood</a></div>
       </tr>
       <tr>
@@ -193,40 +188,52 @@ body {
     </div>
 
   </div>
-</div> -->
+</div>
 
       <br><br><br><br><br><br>
       <div class="form" id="similar_recommendation" style="display:none">
         <div style="font-size:24">
-          Great choice! Other users who enjoyed <div id='selected' style="display:inline"></div> also enjoyed:<br>
-          <table class="rectable" id=similar_recommendations_table style="">
+          Great choice! Other users who enjoyed Shokugeki no Souma also enjoyed:<br><br>
+          <table id=similar_recommendations_table>
+          <tr>
+             <div onclick = 'get(this.id)' id = 'Fullmetal Alchemist: Brotherhood'><a class="link" href="#">Fullmetal Alchemist: Brotherhood</a></div>
+          </tr>
+          <tr>
+             <div onclick = 'get(this.id)' id = 'Death Note'> <a class="link" href="#">Death Note</a></div>
+          </tr>
+          <tr>
+             <div onclick = 'get(this.id)' id = 'Shingeki no Kyojin'><a class="link" href="#"> Shingeki no Kyojin</a> </div>
+          </tr>
+          <tr>
+             <div onclick = 'get(this.id)' id = 'Kuroko no Basket 3rd Season'><a class="link" href="#"> Kuroko no Basket 3rd Season</a></div>
+          </tr>
+          <tr>
+             <div onclick = 'get(this.id)' id = 'Shokugeki no Souma'><a class="link" href="#"> Shokugeki no Souma</a></div>
+          </tr>
           </table>
-        </div>
+
       </div>
+      <script type="text/javascript">
+          function get(e){
+            var item = 'item=' + e;
+            console.log(item)
+            var request = new XMLHttpRequest();
+            request.open('post','/ajax?', true)
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+            request.send(item)
+            request.onreadystatechange = function(){
+              console.log('ready' + request.readyState + request.status)
+              console.log(request.responseText)
+              var names = ""
+              if(request.readyState == 4 && request.status == 200){
+               console.log(request.responseText);
+               names = request.responseText;
+               console.log(names);
+               var similar = document.getElementById("similar_recommendations_table");
+               //similar.innerHTML = names[0] + "hello";
+             }}
+             document.getElementById("similar_recommendation").style.display = "block";
+          }
+      </script>
    </body>
 </html>
-<script type="text/javascript">
-    function get(e){
-      var item = 'item=' + e;
-      console.log(item)
-      var request = new XMLHttpRequest();
-      request.open('post','/ajax?', true)
-      request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-      request.send(item)
-      request.onreadystatechange = function(){
-        console.log('ready' + request.readyState + request.status)
-        console.log(request.responseText)
-        var names = ""
-        if(request.readyState == 4 && request.status == 200){
-         console.log(request.responseText);
-         names = request.responseText;
-         console.log(names);
-         var similar = document.getElementById("similar_recommendations_table");
-         selected = document.getElementById('selected');
-         selected.innerHTML = e;
-         similar.innerHTML = names;
-         console.log(names);
-       }}
-       document.getElementById("similar_recommendation").style.display = "block";
-    }
-</script>

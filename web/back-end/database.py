@@ -14,7 +14,16 @@
 # name: str of item name
 # return a list of similar itme name
 
-database_address = <Database Address>
+#
+# Kafka Address£∫'34.73.198.4:9092'
+# Mysql Database Address: '35.245.49.151'
+# Database User: 'ha'
+# Database Password 'password'
+# Database Name: 'pipeline'
+# Database sqlalchemy: 'mysql+pymysql://ha:password@35.245.49.151/pipeline'
+#
+
+database_address = '35.245.49.151'
 
 import pymysql
 import json

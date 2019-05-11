@@ -14,7 +14,7 @@
 # name: str of item name
 # return a list of similar itme name
 
-database_address = <Database Address>
+database_address = '35.245.49.151'
 
 import pymysql
 import json

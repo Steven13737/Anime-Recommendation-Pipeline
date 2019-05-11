@@ -3,8 +3,15 @@ from kafka import KafkaConsumer
 from kafka.errors import KafkaError
 from kafka.structs import TopicPartition, OffsetAndMetadata
 from pickle import dumps, loads
-
-kafka_address = <Kafka Address>
+#
+# Kafka Address£∫'34.73.198.4:9092'
+# Mysql Database Address: '35.245.49.151'
+# Database User: 'ha'
+# Database Password 'password'
+# Database Name: 'pipeline'
+# Database sqlalchemy: 'mysql+pymysql://ha:password@35.245.49.151/pipeline'
+#
+kafka_address = '34.73.198.4:9092'
 producer = KafkaProducer(bootstrap_servers=[kafka_address])
 
 def kafkasend(topic, msg):
@@ -55,9 +62,10 @@ def kafkareceive(consumer):
 
 def buildhtml(data):
     #function: build html format display code
-    names = ""
+    names = "<table>"
     # Construct Items list
     for i in range(len(data)):
-        strbase = "<div onclick = 'get(this.id)' id = '%s'> %s </div>"%(data[i], data[i])
+        strbase = "<div onclick = 'get(this.id)' id = '%s'><a class=\"link\" href=#>%s</a></div>"%(data[i], data[i])
         names = names + '<tr>' + strbase +' </tr>'
+    names = names + "</table>"
     return names
